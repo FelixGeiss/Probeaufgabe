@@ -1,9 +1,12 @@
 import { fetchVisitorCount } from "@/lib/visitRepository";
 
+/**
+ * Returns the current visitor count.
+ *
+ * @returns A JSON response with the current number of visits.
+ */
 export async function GET() {
-  // Die API-Route holt den aktuellen Besucherzähler serverseitig.
   const visitorCount = await fetchVisitorCount();
 
-  // Als JSON an den Browser zurückgeben.
   return Response.json({ visitorCount });
 }

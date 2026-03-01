@@ -1,15 +1,20 @@
 import { PrismaClient } from "@prisma/client";
 import { PrismaBetterSqlite3 } from "@prisma/adapter-better-sqlite3";
 
-// In Development wird die Prisma-Instanz auf globalThis zwischengespeichert,
-// damit bei Hot Reload nicht immer ein neuer Client erstellt wird.
+/**
+ * Stores a Prisma client instance on the global object in development to avoid
+ * recreating the client during hot reloads.
+ *
+ * @remarks
+ * Next.js hot reloading can re-evaluate modules repeatedly in development.
+ * Caching the client prevents opening multiple Prisma clients unnecessarily.
+ */
 const globalForPrisma = globalThis as unknown as { prisma?: PrismaClient };
 
 const adapter = new PrismaBetterSqlite3({
   url: process.env.DATABASE_URL!,
 });
 
-// Vorhandene Instanz wiederverwenden, sonst eine neue erzeugen.
 const prisma =
   globalForPrisma.prisma ??
   new PrismaClient({
@@ -21,20 +26,33 @@ if (process.env.NODE_ENV !== "production") {
   globalForPrisma.prisma = prisma;
 }
 
+/**
+ * Returns all persisted visit records.
+ *
+ * @returns All visit rows currently stored in the database.
+ */
 export async function fetchVisits() {
-  // Alle Visit-Einträge laden.
   const visits = await prisma.visit.findMany();
   return visits;
 }
 
+/**
+ * Returns the total number of stored visits.
+ *
+ * @returns The current visit count.
+ */
 export async function fetchVisitorCount() {
-  // Die Datenbank liefert direkt nur die Anzahl zurück.
   const visitorCount = await prisma.visit.count();
   return visitorCount;
 }
 
+/**
+ * Persists a new visit record for the provided route path.
+ *
+ * @param path The visited route path.
+ * @returns A promise that resolves after the record has been written.
+ */
 export async function addVisit(path: string) {
-  // Einen neuen Besuch mit dem vom Client übergebenen Seitenpfad speichern.
   await prisma.visit.create({
     data: {
       path,

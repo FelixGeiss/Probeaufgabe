@@ -3,12 +3,19 @@
 import { useEffect } from "react";
 import { usePathname } from "next/navigation";
 
+/**
+ * Tracks client-side route changes and reports them to the visits API.
+ *
+ * @remarks
+ * This component intentionally renders nothing. It exists only to trigger
+ * the side effect that records each route change.
+ *
+ * @returns `null`, because the component has no visual output.
+ */
 export default function VisitTracker() {
-  // Den aktuellen URL-Pfad aus dem Next.js App Router lesen.
   const pathname = usePathname();
 
   useEffect(() => {
-    // Bei jedem Seitenwechsel einen neuen Visit an die API melden.
     void fetch("/api/visits", {
       method: "POST",
       headers: {
@@ -18,6 +25,5 @@ export default function VisitTracker() {
     });
   }, [pathname]);
 
-  // Die Komponente rendert nichts sichtbar; sie dient nur dem Tracking.
   return null;
 }
