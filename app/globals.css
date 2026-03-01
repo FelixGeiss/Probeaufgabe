@@ -42,11 +42,3 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
-
-main {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  min-height: calc(100vh - 153px);
-  padding: 0 20px;
-}

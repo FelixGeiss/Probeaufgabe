@@ -6,7 +6,7 @@ export default async function Home() {
   const joke = await getChuckNorrisJoke();
 
   return (
-    <main className="mx-auto w-full max-w-7xl">
+    <main className="mx-auto flex min-h-[calc(100vh-153px)] w-full max-w-7xl items-center justify-between px-5">
       <LeftImage />
       <ChuckNorrisJokes joke={joke} />
     </main>
