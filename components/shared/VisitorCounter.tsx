@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 
 export default function VisitorCounter() {
-  // Lokaler State fuer die aktuell angezeigte Besucherzahl.
+  // Lokaler State für die aktuell angezeigte Besucherzahl.
   const [visitorCount, setVisitorCount] = useState(0);
 
   useEffect(() => {
@@ -33,7 +33,7 @@ export default function VisitorCounter() {
     // Direkt beim ersten Rendern einmal laden.
     void loadVisitorCount();
 
-    // Danach regelmaessig aktualisieren, damit neue Besuche sichtbar werden.
+    // Danach regelmäßig aktualisieren, damit neue Besuche sichtbar werden.
     const interval = setInterval(() => {
       void loadVisitorCount();
     }, 5000);
@@ -46,5 +46,5 @@ export default function VisitorCounter() {
   }, []);
 
   // Die aktuelle Besucherzahl im Footer anzeigen.
-  return <p className="text-sm text-zinc-300">{visitorCount} Besucher</p>;
+  return <p className="footer-text text-sm">{visitorCount} Visitors</p>;
 }

@@ -24,16 +24,18 @@ export default function ChuckNorrisJokes(prop: Prop) {
 
   return (
     <section className="w-1/2 p-4">
-      <h2 className="mb-4 text-2xl font-bold">Chuck Norris Witze</h2>
+      <h2 className="heading-text mb-4 text-2xl font-bold">
+        Chuck Norris Jokes
+      </h2>
 
       {/* Aktuellen Witz aus dem State anzeigen */}
-      <p>{currentJoke.value}</p>
+      <p className="rendered-text">{currentJoke.value}</p>
 
       <button
         onClick={loadJoke}
-        className="mt-4 rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-600"
+        className="button-text mt-4 rounded bg-blue-500 px-4 py-2 hover:bg-blue-600"
       >
-        Nächster Witz
+        Next Joke
       </button>
     </section>
   );

@@ -22,19 +22,19 @@ if (process.env.NODE_ENV !== "production") {
 }
 
 export async function fetchVisits() {
-  // Alle Visit-Eintraege laden.
+  // Alle Visit-Einträge laden.
   const visits = await prisma.visit.findMany();
   return visits;
 }
 
 export async function fetchVisitorCount() {
-  // Die Datenbank liefert direkt nur die Anzahl zurueck.
+  // Die Datenbank liefert direkt nur die Anzahl zurück.
   const visitorCount = await prisma.visit.count();
   return visitorCount;
 }
 
 export async function addVisit(path: string) {
-  // Einen neuen Besuch mit dem vom Client uebergebenen Seitenpfad speichern.
+  // Einen neuen Besuch mit dem vom Client übergebenen Seitenpfad speichern.
   await prisma.visit.create({
     data: {
       path,

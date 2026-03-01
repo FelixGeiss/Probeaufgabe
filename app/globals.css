@@ -3,19 +3,37 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --footer-text: #ffffff;
+  --button-text: #ffffff;
+  --heading-text: #ffffff;
+  --rendered-text: #ffffff;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+.footer-text {
+  color: var(--footer-text);
 }
+
+.button-text {
+  color: var(--button-text);
+}
+
+.heading-text {
+  color: var(--heading-text);
+}
+
+.rendered-text {
+  color: var(--rendered-text);
+}
+
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+    --footer-text: #ffffff;
+    --button-text: #ffffff;
+    --heading-text: #ffffff;
+    --rendered-text: #ffffff;
   }
 }
 

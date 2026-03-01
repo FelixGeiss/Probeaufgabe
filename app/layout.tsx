@@ -33,7 +33,7 @@ export default function RootLayout({
         <VisitTracker />
         <Header />
         {children}
-        <Footer />
+        <Footer/>
       </body>
     </html>
   );
