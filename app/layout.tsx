@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import VisitTracker from "@/components/VisitTracker";
 import { Geist, Geist_Mono } from "next/font/google";
 import Footer from "@/components/shared/Footer";
 import Header from "@/components/shared/Header";
@@ -29,6 +30,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <VisitTracker />
         <Header />
         {children}
         <Footer />
@@ -36,3 +38,4 @@ export default function RootLayout({
     </html>
   );
 }
+ 
