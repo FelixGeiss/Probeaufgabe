@@ -23,7 +23,7 @@ export default function ChuckNorrisJokes(prop: Prop) {
   }
 
   return (
-    <section className="w-1/2 p-4">
+    <section className="flex w-1/2 flex-col items-center justify-center p-4 text-center">
       <h2 className="heading-text mb-4 text-2xl font-bold">
         Chuck Norris Jokes
       </h2>

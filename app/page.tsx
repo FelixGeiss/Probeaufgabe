@@ -6,7 +6,7 @@ export default async function Home() {
   const joke = await getChuckNorrisJoke();
 
   return (
-    <main className="">
+    <main className="mx-auto w-full max-w-7xl">
       <LeftImage />
       <ChuckNorrisJokes joke={joke} />
     </main>
