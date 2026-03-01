@@ -11,7 +11,7 @@ export default function LeftImage({
   alt = "Chuck Norris",
 }: LeftImageProps) {
   return (
-    <div className="my-4 relative min-h-[700px] w-1/2">
+    <div className="relative my-4 min-h-[320px] w-full sm:min-h-[500px] md:min-h-[700px] md:w-1/2">
       <Image
         src={src}
         alt={alt}
