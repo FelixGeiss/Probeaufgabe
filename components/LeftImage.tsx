@@ -12,7 +12,14 @@ export default function LeftImage({
 }: LeftImageProps) {
   return (
     <div className="relative min-h-[700px] w-1/2">
-      <Image src={src} alt={alt} fill className="object-contain" />
+      <Image
+        src={src}
+        alt={alt}
+        fill
+        loading="eager"
+        sizes="(max-width: 768px) 100vw, 50vw"
+        className="object-contain"
+      />
     </div>
   );
 }
