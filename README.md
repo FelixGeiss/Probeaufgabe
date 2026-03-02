@@ -1,36 +1,98 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Mein Projekt
+
+This project is a small Next.js application that displays a Chuck Norris joke,
+renders a responsive hero image, and tracks page visits in a SQLite database via
+Prisma.
+
+## Features
+
+- Server-rendered initial joke on the home page
+- Client-side button to load a new joke
+- Visit tracking for route changes
+- Visitor counter in the footer
+- Responsive layout with Tailwind CSS
+
+## Tech Stack
+
+- Next.js (App Router)
+- React
+- TypeScript
+- Tailwind CSS
+- Prisma
+- SQLite
 
 ## Getting Started
 
-First, run the development server:
+Install dependencies:
+
+```bash
+npm install
+```
+
+Create an `.env` file if you do not already have one and set the database URL:
+
+```env
+DATABASE_URL="file:./dev.db"
+```
+
+Start the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open `http://localhost:3000` in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Available Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run dev
+```
 
-## Learn More
+Starts the local development server.
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm run build
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Builds the application for production.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+npm run start
+```
 
-## Deploy on Vercel
+Starts the production build locally.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+npm run lint
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Runs ESLint.
+
+## Project Structure
+
+- `app/`
+  Contains routes, layout, and API endpoints.
+- `components/`
+  Contains UI components such as the hero image, jokes section, footer, and
+  visit tracker.
+- `lib/`
+  Contains API helpers and Prisma database access logic.
+- `types/`
+  Contains shared TypeScript types.
+- `prisma/`
+  Contains the Prisma schema and migrations.
+
+## Visit Tracking
+
+Client-side route changes are tracked by `VisitTracker`. Each route change sends
+a `POST` request to `/api/visits`, which stores the visited path in the
+database. The footer polls `/api/visits/count` to display the latest visitor
+count.
+
+## Notes
+
+- `dev.db` is a local SQLite database file and should not be committed.
+- Prisma is used only on the server side.
+- The generated `docs/` folder is build output if documentation is generated and
+  should be treated as generated content.
