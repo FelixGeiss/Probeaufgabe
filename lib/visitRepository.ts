@@ -26,15 +26,6 @@ if (process.env.NODE_ENV !== "production") {
   globalForPrisma.prisma = prisma;
 }
 
-/**
- * Returns all persisted visit records.
- *
- * @returns All visit rows currently stored in the database.
- */
-export async function fetchVisits() {
-  const visits = await prisma.visit.findMany();
-  return visits;
-}
 
 /**
  * Returns the total number of stored visits.
