@@ -1,14 +1,12 @@
 # Mein Projekt
 
-This project is a small Next.js application that displays a Chuck Norris joke,
-renders a responsive hero image, and tracks page visits in a SQLite database via
-Prisma.
+This project is a small Next.js application that displays a Chuck Norris joke, renders a responsive image, and stores page visits in a SQLite database via Prisma.
 
 ## Features
 
 - Server-rendered initial joke on the home page
 - Client-side button to load a new joke
-- Visit tracking for route changes
+- Page visit tracking on route changes
 - Visitor counter in the footer
 - Responsive layout with Tailwind CSS
 
@@ -21,7 +19,7 @@ Prisma.
 - Prisma
 - SQLite
 
-## Getting Started
+## Setup
 
 Install dependencies:
 
@@ -29,10 +27,16 @@ Install dependencies:
 npm install
 ```
 
-Create an `.env` file if you do not already have one and set the database URL:
+Create an `.env` file if it does not already exist and set the database URL:
 
 ```env
 DATABASE_URL="file:./dev.db"
+```
+
+If the Prisma Client has not been generated yet or the Prisma schema changed, run:
+
+```bash
+npx prisma generate
 ```
 
 Start the development server:
@@ -41,7 +45,7 @@ Start the development server:
 npm run dev
 ```
 
-Open `http://localhost:3000` in your browser.
+The application will then be available at `http://localhost:3000`.
 
 ## Available Scripts
 
@@ -55,7 +59,7 @@ Starts the local development server.
 npm run build
 ```
 
-Builds the application for production.
+Creates the production build.
 
 ```bash
 npm run start
@@ -74,25 +78,19 @@ Runs ESLint.
 - `app/`
   Contains routes, layout, and API endpoints.
 - `components/`
-  Contains UI components such as the hero image, jokes section, footer, and
-  visit tracker.
+  Contains UI components such as the image, joke section, footer, and visit tracker.
 - `lib/`
-  Contains API helpers and Prisma database access logic.
+  Contains API helpers and the Prisma logic for database access.
 - `types/`
   Contains shared TypeScript types.
 - `prisma/`
-  Contains the Prisma schema and migrations.
+  Contains the Prisma schema.
 
 ## Visit Tracking
 
-Client-side route changes are tracked by `VisitTracker`. Each route change sends
-a `POST` request to `/api/visits`, which stores the visited path in the
-database. The footer polls `/api/visits/count` to display the latest visitor
-count.
+Client-side route changes are tracked by `VisitTracker`. On each route change, a `POST` request is sent to `/api/visits`, which stores the visited path in the database. The footer fetches the current visitor count from `/api/visits/count` and displays it.
 
 ## Notes
 
-- `dev.db` is a local SQLite database file and should not be committed.
-- Prisma is used only on the server side.
-- The generated `docs/` folder is build output if documentation is generated and
-  should be treated as generated content.
+- `dev.db` is a local SQLite file and should not be committed to the repository.
+- Prisma is only used on the server side.
