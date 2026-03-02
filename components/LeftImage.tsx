@@ -22,13 +22,13 @@ export default function LeftImage(props: LeftImageProps) {
   const { src = defaultImage, alt = "Chuck Norris" } = props;
 
   return (
-    <div className="relative my-4 min-h-[320px] w-full sm:min-h-[500px] md:min-h-[700px] md:w-1/2">
+    <div className="relative my-4 min-h-80 w-full sm:min-h-96 md:min-h-[70vh] md:w-1/2">
       <Image
         src={src}
         alt={alt}
         fill
         loading="eager"
-        sizes="(max-width: 768px) 100vw, 50vw"
+        sizes="(max-width: 768px) 100vw"
         className="object-contain"
       />
     </div>
